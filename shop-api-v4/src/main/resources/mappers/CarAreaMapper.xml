@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fh.shop.apiv4.carArea.mapper.CarAreaMapper">
+
+	<select id="queryArea" parameterType="Long" resultType="com.fh.shop.apiv4.carArea.po.CarArea">
+		select p.id,userId,consignee,consigneePhone,xxArea,
+		concat(c.Name,d.Name,e.Name)"areaName"
+		 from t_car_area p
+			left join t_area c on p.cate1=c.id
+			left join t_area d on p.cate2=d.id
+			left join t_area e on p.cate3=e.id
+		where userId = #{id};
+	</select>
+
+</mapper>
